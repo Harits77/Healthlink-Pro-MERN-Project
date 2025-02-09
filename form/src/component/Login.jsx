@@ -36,8 +36,12 @@ const Login = () => {
         if (result.data.message === "Login Successfull") {
           localStorage.setItem("userId", result.data.userId);
           navigate("/dash");  
-        } else {
-          alert(result.data); 
+        } 
+        else if(result.data.message === "No user found"){
+           alert("user not found")
+         }        
+        else {
+          alert("email or password incorrect");
         }
       })
       .catch((err) => {
