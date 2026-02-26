@@ -109,36 +109,5 @@ Consult the route files for full endpoint details:
 - Frontend: components live in `form/src/component`. Typical pages include `Login.jsx`, `Register.jsx`, `Booking.jsx`, `ViewPrescription.jsx`, etc.
 - Backend: models are in `server/models` (Booking, Doctor, Patient, Prescription). Controllers implement business logic in `server/controllers`.
 
-If you add authentication or other middleware, place it in the server and apply routes accordingly.
 
-## Scripts
 
-Check each `package.json` for available scripts. Typical commands:
-
-- Frontend: `npm run dev`, `npm run build`, `npm run preview`
-- Backend: `npm run dev` (if using nodemon) or `npm start`
-
-## Contributing
-
-Feel free to open issues or PRs. When contributing, please:
-
-- Fork the repo and create a feature branch
-- Open a pull request with a clear description of changes
-
-## Troubleshooting
-
-- If the frontend cannot reach the backend, verify `VITE_API_URL` and that the server is running and not blocked by firewall.
-- For database errors, ensure `MONGO_URI` is correct and accessible.
-
-## License
-
-This repository does not include an explicit license; add one if you intend to share or publish the project.
-
----
-
-If you want, I can also:
-
-- Add example `.env` templates for `server` and `form`.
-- Generate more detailed API docs (endpoints + request/response samples) by reading the route/controller code.
-
-File: [README.md](README.md)
