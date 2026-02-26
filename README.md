@@ -53,11 +53,7 @@ Install and run the backend
 ```bash
 cd server
 npm install
-# create a .env file with at least the MongoDB connection string
-# Example .env variables (adjust names according to server code expectations):
-# MONGO_URI=<your-mongodb-uri>
-# PORT=5000
-# JWT_SECRET=<optional-if-used>
+# Configure the MongoDB connection and port directly in the server code (see `server/index.js`)
 npm run dev # or `node index.js` / `npm start` depending on package.json scripts
 ```
 
@@ -66,25 +62,20 @@ Install and run the frontend
 ```bash
 cd form
 npm install
-# If the frontend expects a base API URL, set it in an env file (e.g. VITE_API_URL="http://localhost:5000/api")
+# If the frontend needs a base API URL, configure it directly in the code or in Vite configuration
 npm run dev
 ```
 
 Open the app in your browser at the address shown by Vite (commonly http://localhost:5173).
 
-## Environment Variables
+## Configuration
 
-Typical server variables (create `server/.env`):
+This project does not require `.env` files by default. Configuration values such as the MongoDB connection string, server port, or frontend API base URL are defined directly in the application code or configuration files. Please inspect the following locations to change runtime settings:
 
-- `MONGO_URI` — MongoDB connection string
-- `PORT` — server port (default: 5000)
-- `JWT_SECRET` — secret for JWT auth (if implemented)
+- Server: `server/index.js` (or any config module used by the server)
+- Frontend: check `form/src` for where the API base URL is referenced, or `vite.config.js` for Vite-level configuration
 
-Typical frontend variables (create `form/.env` or use Vite env prefix):
-
-- `VITE_API_URL` — base API URL (e.g. `http://localhost:5000/api`)
-
-Note: Check the server code for exact env variable names used in configuration.
+Note: If you prefer to use environment files, you may add them and update the code to read from `process.env` or Vite envs accordingly.
 
 ## API Overview
 
@@ -109,5 +100,11 @@ Consult the route files for full endpoint details:
 - Frontend: components live in `form/src/component`. Typical pages include `Login.jsx`, `Register.jsx`, `Booking.jsx`, `ViewPrescription.jsx`, etc.
 - Backend: models are in `server/models` (Booking, Doctor, Patient, Prescription). Controllers implement business logic in `server/controllers`.
 
+If you add authentication or other middleware, place it in the server and apply routes accordingly.
 
+## Scripts
 
+Check each `package.json` for available scripts. Typical commands:
+
+- Frontend: `npm run dev`, `npm run build`, `npm run preview`
+- Backend: `npm run dev` (if using nodemon) or `npm start`
